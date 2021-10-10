@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  MockService:
+    build: 
+      context: ./../../build
+      dockerfile: Dockerfile.Mock
+    image: mock:${APP_VERSION}
+    container_name: MockService
+    ports: 
+      - "7070:8080"

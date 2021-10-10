@@ -1,0 +1,11 @@
+FROM rodolpheche/wiremock:2.24.1
+
+WORKDIR /home/wiremock
+
+COPY resources/test/wiremock/__files/ /home/wiremock/__files/
+COPY resources/test/wiremock/mappings/ /home/wiremock/mappings/
+
+EXPOSE 8080 8081
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["java", "-cp", "/var/wiremock/lib/*:/var/wiremock/extensions/*", "com.github.tomakehurst.wiremock.standalone.WireMockServerRunner"]

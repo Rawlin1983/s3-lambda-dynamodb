@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  Demo:
+    extends:
+      file: docker-compose.yml
+      service: Demo
+    links:
+    - MockService
+  MockService:
+    extends:
+      file: docker-compose-mock.yml
+      service: MockService
+

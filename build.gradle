@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.test'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVersion = '3.0.0'
+    awsVersion = '1.12.83'
+    lombokVersion = '1.18.20'
+
+    junitVersion = '5.7.2'
+    junitRunnerVersion = '1.7.2'
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "io.springfox:springfox-boot-starter:${springVersion}"
+
+    implementation "com.amazonaws:aws-java-sdk-pom:${awsVersion}"
+    implementation "com.amazonaws:aws-java-sdk-dynamodb:${awsVersion}"
+    implementation "org.projectlombok:lombok:${lombokVersion}"
+    implementation "com.google.guava:guava:22.0"
+    implementation 'com.google.code.gson:gson:2.8.8'
+
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "org.junit.platform:junit-platform-runner:${junitRunnerVersion}"
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
